@@ -10,7 +10,6 @@ export function fetch (dispatch: Dispatch) {
   dispatch(startFetch())
   weather.getToday()
     .then((report) => {
-      console.log('usecase.getToday', report)
       dispatch(successFetch(report))
     })
     .catch((error) => {

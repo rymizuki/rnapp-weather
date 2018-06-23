@@ -6,10 +6,12 @@ import { Dispatch } from 'redux';
 
 import * as weather from '../../usecases/weather'
 import { RootState } from '../../store/state';
+import { WeatherReport } from '../../services/weather/weather-report';
 
 function mapStateToProps (state: RootState) {
-  console.log(state)
   return {
+    loading: state.weather.loading,
+    report: state.weather.report,
   }
 }
 
@@ -31,6 +33,8 @@ const styles = StyleSheet.create({
 })
 
 type Props = {
+  loading: boolean
+  report: WeatherReport | null
   fetchWeather (): void
 }
 
@@ -39,11 +43,16 @@ export class Main extends React.Component<Props> {
     this.props.fetchWeather()
   }
   render() {
+    const message = this.props.loading ? (
+      <Text>Loading</Text>
+    ) : this.props.report ? (
+      <Text>{ this.props.report.weather.main }</Text>
+    ) : (
+      <Text>ボタンを押して取得しよう</Text>
+    )
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <View>{ message }</View>
         <Button
           onPress={ () => this.onPressFetchWeather() }
           title="天気を取得"

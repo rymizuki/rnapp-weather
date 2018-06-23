@@ -41,9 +41,9 @@ export class WeatherReportTemperature {
 export default function ({ weather, main }: any): WeatherReport {
   return new WeatherReport(
     new WeatherReportWeather(
-      weather.main,
-      weather.description,
-      weather.icon
+      weather[0].main,
+      weather[0].description,
+      weather[0].icon
     ),
     new WeatherReportTemperature(
       main.temp,

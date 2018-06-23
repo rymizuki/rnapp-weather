@@ -6,7 +6,6 @@ export function startFetch (): StartFetch {
 }
 
 export function successFetch (report: WeatherReport): ResolveFetch {
-  console.log(report)
   return { type: 'WEATHER_FETCH_RESOLVE', report }
 }
 
