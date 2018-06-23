@@ -18,3 +18,30 @@ yarn-error.log*
 
 # for environment
 .DS_Store
+
+# for Android Studio
+# See https://qiita.com/komax/items/d1aaecaec0a22cb5bc4e
+android/*.iml
+android/.gradle
+android/local.properties
+android/.idea/workspace.xml
+android/.idea/libraries
+
+android/*.apk
+android/*.ap_
+android/*.dex
+android/*.class
+android/bin/
+android/gen/
+android/local.properties
+android/.classpath
+android/.project
+android/proguard/
+android/*.ipr
+android/*.iws
+android/app/build/
+
+android/.idea/*.xml
+
+!android/.idea/gradle.xml
+!android/.idea/runConfigurations/*.xml
