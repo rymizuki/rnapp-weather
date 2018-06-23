@@ -4,15 +4,16 @@ import {
   successFetch,
   failedFetch
 } from '../actions/weather'
-import weather from '../services/weather'
+import weather from '../services/weather/index'
 
 export function fetch (dispatch: Dispatch) {
   dispatch(startFetch())
-  weather.fetch()
-    .then(() => {
-      dispatch(successFetch())
+  weather.getToday()
+    .then((report) => {
+      console.log('usecase.getToday', report)
+      dispatch(successFetch(report))
     })
-    .catch(() => {
-      dispatch(failedFetch())
+    .catch((error) => {
+      dispatch(failedFetch(error))
     })
 }

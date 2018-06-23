@@ -28,11 +28,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
 
-export class Main extends React.Component {
+type Props = {
+  fetchWeather (): void
+}
+
+export class Main extends React.Component<Props> {
   onPressFetchWeather () {
-
+    this.props.fetchWeather()
   }
   render() {
     return (
@@ -41,7 +45,7 @@ export class Main extends React.Component {
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
         <Button
-          onPress={ this.onPressFetchWeather }
+          onPress={ () => this.onPressFetchWeather() }
           title="天気を取得"
         />
       </View>
