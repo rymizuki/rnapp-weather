@@ -47,7 +47,7 @@ android/.idea/*.xml
 !android/.idea/runConfigurations/*.xml
 
 # for Xcode
-# https://qiita.com/ikuwow/items/4fae81a099bf82f44749
+# See https://qiita.com/ikuwow/items/4fae81a099bf82f44749
 ios/build/
 ios/*.pbxuser
 ios/!default.pbxuser
