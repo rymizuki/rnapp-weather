@@ -1,3 +1,15 @@
+export class WeatherImageBuilder {
+  readonly baseUri: string = 'http://openweathermap.org/img/w/'
+  readonly ext: string = '.png'
+  private icon: string
+  constructor (icon: string) {
+    this.icon = icon
+  }
+  build () {
+    return `${ this.baseUri }${ this.icon }${ this.ext }`
+  }
+}
+
 export class WeatherReport {
   weather: WeatherReportWeather
   temperature: WeatherReportTemperature
@@ -20,10 +32,12 @@ export class WeatherReportWeather {
   main: string
   description: string
   icon: string
+  image: string
   constructor (main: string, description: string, icon: string) {
     this.main = main
     this.description = description
     this.icon = icon
+    this.image = new WeatherImageBuilder(this.icon).build()
   }
 }
 

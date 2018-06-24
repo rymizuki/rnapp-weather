@@ -16,6 +16,7 @@ export default (state = {}, action: WeatherActions): WeatherState => {
             main: action.report.weather.main,
             description: action.report.weather.description,
             icon: action.report.weather.icon,
+            image: action.report.weather.image,
           },
           temperature: {
             current: action.report.temperature.current,

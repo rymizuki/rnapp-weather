@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Header, Body, Title, Content, Grid, Row, Col, Button, Icon, Text } from 'native-base'
+import { Container, Header, Body, Title, Content, Grid, Row, Col, Button, Icon, Text, Thumbnail, View } from 'native-base'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
@@ -67,7 +67,21 @@ export class Main extends React.Component<Props> {
                 </Button>
               </Col>
             </Row>
-            <Row style={{ marginTop: 20 }}>
+            <Row style={{ marginTop: 20, justifyContent: 'center' }}>
+              <Col>
+                {(() => {
+                  return this.props.report ? (
+                    <Thumbnail
+                      square
+                      large
+                      source={{ uri: this.props.report.weather.image }}
+                      style={{ marginLeft: 'auto', marginRight: 'auto' }}
+                      />
+                ) : null 
+                })()}
+              </Col>
+            </Row>
+            <Row>
               <Col>
                 <Text style={{ textAlign: 'center' }}>{ message }</Text>
               </Col>
