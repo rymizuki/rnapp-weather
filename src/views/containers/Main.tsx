@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
+import { Container, Header, Body, Title } from 'native-base'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
@@ -54,13 +55,20 @@ export class Main extends React.Component<Props> {
       <Text>ボタンを押して取得しよう</Text>
     )
     return (
-      <View style={styles.container}>
-        <View>{ message }</View>
-        <Button
-          onPress={ () => this.onPressReloadWeather() }
-          title="天気を再読込"
-        />
-      </View>
+      <Container>
+        <Header>
+          <Body>
+            <Title>{ 'Weather' }</Title>
+          </Body>
+        </Header>
+        <View style={styles.container}>
+          <View>{ message }</View>
+          <Button
+            onPress={ () => this.onPressReloadWeather() }
+            title="天気を再読込"
+          />
+        </View>
+      </Container>
     )
   }
 }
