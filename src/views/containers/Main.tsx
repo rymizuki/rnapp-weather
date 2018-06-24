@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Header, Body, Title, Content, Grid, Row, Col, Button, Text } from 'native-base'
+import { Container, Header, Body, Title, Content, Grid, Row, Col, Button, Icon, Text } from 'native-base'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
@@ -54,15 +54,16 @@ export class Main extends React.Component<Props> {
         <Content>
           <Grid>
             <Row style={{ marginTop: 10, alignItems: 'center' }}>
-              <Col size={ 3 }>
+              <Col size={ 5 }>
                 <Text style={{ textAlignVertical: 'center', textAlign: 'center' }}>今の天気</Text>
               </Col>
-              <Col size={ 1 }>
+              <Col size={ 2 }>
                 <Button
+                  light
                   small
                   onPress={ () => this.onPressReloadWeather() }
                 >
-                  <Text>再読込</Text>
+                  <Icon name="refresh" />
                 </Button>
               </Col>
             </Row>
