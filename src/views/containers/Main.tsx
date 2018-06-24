@@ -17,9 +17,8 @@ function mapStateToProps (state: RootState) {
 
 function mapDispatchToProps (dispatch: Dispatch) {
   return {
-    fetchWeather () {
-      weather.fetch(dispatch)
-    }
+    loadWeather: weather.load(dispatch),
+    reloadWeather: weather.reload(dispatch),
   }
 }
 
@@ -35,12 +34,16 @@ const styles = StyleSheet.create({
 type Props = {
   loading: boolean
   report: WeatherReport | null
-  fetchWeather (): void
+  loadWeather (): void
+  reloadWeather (): void
 }
 
 export class Main extends React.Component<Props> {
-  onPressFetchWeather () {
-    this.props.fetchWeather()
+  componentDidMount () {
+    this.props.loadWeather()
+  }
+  onPressReloadWeather () {
+    this.props.reloadWeather()
   }
   render() {
     const message = this.props.loading ? (
@@ -54,8 +57,8 @@ export class Main extends React.Component<Props> {
       <View style={styles.container}>
         <View>{ message }</View>
         <Button
-          onPress={ () => this.onPressFetchWeather() }
-          title="天気を取得"
+          onPress={ () => this.onPressReloadWeather() }
+          title="天気を再読込"
         />
       </View>
     )
