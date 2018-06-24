@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
-import { Container, Header, Body, Title } from 'native-base'
+import { Container, Header, Body, Title, Content, Grid, Row, Col, Button, Text } from 'native-base'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux';
@@ -22,15 +21,6 @@ function mapDispatchToProps (dispatch: Dispatch) {
     reloadWeather: weather.reload(dispatch),
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 type Props = {
   loading: boolean
@@ -61,13 +51,28 @@ export class Main extends React.Component<Props> {
             <Title>{ 'Weather' }</Title>
           </Body>
         </Header>
-        <View style={styles.container}>
-          <View>{ message }</View>
-          <Button
-            onPress={ () => this.onPressReloadWeather() }
-            title="天気を再読込"
-          />
-        </View>
+        <Content>
+          <Grid>
+            <Row style={{ marginTop: 10, alignItems: 'center' }}>
+              <Col size={ 3 }>
+                <Text style={{ textAlignVertical: 'center', textAlign: 'center' }}>今の天気</Text>
+              </Col>
+              <Col size={ 1 }>
+                <Button
+                  small
+                  onPress={ () => this.onPressReloadWeather() }
+                >
+                  <Text>再読込</Text>
+                </Button>
+              </Col>
+            </Row>
+            <Row style={{ marginTop: 20 }}>
+              <Col>
+                <Text style={{ textAlign: 'center' }}>{ message }</Text>
+              </Col>
+            </Row>
+          </Grid>
+        </Content>
       </Container>
     )
   }
